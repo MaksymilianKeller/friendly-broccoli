@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const products = await Product.find({});
 
     try {
-        res.send(products);
+        res.status(200).send(products);
     } catch (error) {
         res.status(500).send("Error: " + error);
     }
@@ -90,6 +90,23 @@ router.get('/unitOfMeasure/:unitOfMeasure', async (req, res) => {
         }
 
         res.send(product)
+    } catch (error) {
+        res.status(500).send("Error: " + error);
+    }
+});
+
+router.get('/report', async (req, res) => {
+    const products = await Product.find({});
+    const report = products.map((item) => {
+        return {
+            "Name": item.name,
+            "Quantity": item.quantity,
+            "TotalValue": item.quantity * item.price
+        }
+    })
+
+    try {
+        res.status(200).send(report);
     } catch (error) {
         res.status(500).send("Error: " + error);
     }
