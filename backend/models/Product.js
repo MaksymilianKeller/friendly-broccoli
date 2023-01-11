@@ -7,7 +7,7 @@ const productSchema = new Schema({
         unique: true
     },
     price: {
-        type: Double,
+        type: Number,
         require: true,
         min: 0
     },
@@ -17,7 +17,7 @@ const productSchema = new Schema({
         require: false
     },
     quantity: {
-        type: Integer,
+        type: Number,
         require: true,
         min: 0
     },
