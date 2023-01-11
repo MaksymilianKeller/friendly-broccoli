@@ -46,9 +46,10 @@ router.get('/name/:name', async (req, res) => {
 });
 
 router.get('/price/:price', async (req, res) => {
-    let product = await Product.find({
+    const product = await Product.find({
         price: req.params.price
     })
+
     try {
         if (product == null) {
             res.status(404).send("Item not found.")
@@ -62,9 +63,10 @@ router.get('/price/:price', async (req, res) => {
 });
 
 router.get('/quantity/:quantity', async (req, res) => {
-    let product = await Product.find({
+    const product = await Product.find({
         quantity: req.params.quantity
     })
+
     try {
         if (product == null) {
             res.status(404).send("Item not found.")
@@ -78,9 +80,10 @@ router.get('/quantity/:quantity', async (req, res) => {
 });
 
 router.get('/unitOfMeasure/:unitOfMeasure', async (req, res) => {
-    let product = await Product.find({
+    const product = await Product.find({
         unitOfMeasure: req.params.unitOfMeasure
     })
+
     try {
         if (product == null) {
             res.status(404).send("Item not found.")
@@ -111,7 +114,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const body = req.body;
-        let productToUpdate = await Product.findById(req.params.id);
+        const productToUpdate = await Product.findById(req.params.id);
 
         if (productToUpdate == null) {
             res.status(404).send("Item not found.")
